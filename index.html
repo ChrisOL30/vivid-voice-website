@@ -1,19 +1,865 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Voice - Voice Journal & Goal Setting App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .float-element {
+            animation: float 4s ease-in-out infinite;
+        }
+        /* Radial gradient background */
+        .radial-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.1) 0%, rgba(255, 255, 255, 1) 20%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 4px;
+        }
+        /* Voice wave animation */
+        .voice-wave {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 60px;
+            height: 40px;
+        }
+        .voice-wave div {
+            height: 10px;
+            width: 6px;
+            background: #8b5cf6;
+            border-radius: 5px;
+            animation: voice-wave-animation 1.2s infinite ease-in-out;
+        }
+        .voice-wave div:nth-child(1) {
+            animation-delay: -0.4s;
+        }
+        .voice-wave div:nth-child(2) {
+            animation-delay: -0.2s;
+        }
+        .voice-wave div:nth-child(3) {
+            animation-delay: 0s;
+        }
+        @keyframes voice-wave-animation {
+            0%, 100% {
+                height: 10px;
+            }
+            50% {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-filter backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="voice-wave mr-2">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Vivid Voice</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex space-x-8">
+                        <a href="#features" class="text-gray-600 hover:text-purple-500 px-3 py-2 font-medium">Features</a>
+                        <a href="#how-it-works" class="text-gray-600 hover:text-purple-500 px-3 py-2 font-medium">How It Works</a>
+                        <a href="#testimonials" class="text-gray-600 hover:text-purple-500 px-3 py-2 font-medium">Testimonials</a>
+                        <a href="#faq" class="text-gray-600 hover:text-purple-500 px-3 py-2 font-medium">FAQ</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-purple-500 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-b-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-500 hover:bg-purple-50">Features</a>
+                <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-500 hover:bg-purple-50">How It Works</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-500 hover:bg-purple-50">Testimonials</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-500 hover:bg-purple-50">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative radial-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="relative z-10">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+                        <span class="block text-gray-900">Express Yourself with</span>
+                        <span class="block bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Vivid Voice</span>
+                    </h1>
+                    <p class="mt-3 text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
+                        The voice journaling app that helps you track your thoughts, set goals, and reflect on your journey — all through the power of your voice.
+                    </p>
+                    <div class="mt-8 sm:flex sm:max-w-md">
+                        <div class="rounded-md shadow">
+                            <a href="#waitlist" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 md:py-4 md:text-lg md:px-10 transition duration-300 transform hover:scale-105">
+                                Join Waitlist
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex items-center">
+                        <div class="flex space-x-1">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">Rated 5/5 by early testers</span>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 relative float-element">
+                    <div class="relative mx-auto w-full max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0">
+                        <!-- Illustration -->
+                        <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+                            <img class="w-full" src="images/hero-image.jpg" alt="Person holding phone to record voice journal in Vivid Voice app">
+                            <div class="absolute inset-0 bg-gradient-to-t from-purple-600/30 to-transparent p-6 flex items-end">
+                                <div class="w-full bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                                    <div class="flex items-center">
+                                        <div class="p-2 bg-purple-100 rounded-full shadow-lg">
+                                            <i class="fas fa-microphone text-purple-600 text-xl"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <p class="text-gray-900 font-medium">Speaking my truth</p>
+                                            <p class="text-purple-600 text-sm">Daily reflection • 4:18 min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-purple-200 rounded-full opacity-70 mix-blend-multiply filter blur-xl"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-pink-200 rounded-full opacity-70 mix-blend-multiply filter blur-xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Powerful Features
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Designed to help you reflect, grow, and achieve your goals through voice journaling
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-purple-50 text-purple-600 ring-4 ring-white">
+                            <i class="fas fa-microphone text-2xl"></i>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <a href="#" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                Voice Journaling
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Speak your thoughts freely - we'll transcribe and organize them for you. No typing required.
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-purple-400" aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-600 ring-4 ring-white">
+                            <i class="fas fa-bullseye text-2xl"></i>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <a href="#" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                Goal Tracking
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Set, monitor, and adjust your goals with voice commands. Get reminders and progress tracking.
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-blue-400" aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-pink-50 text-pink-600 ring-4 ring-white">
+                            <i class="fas fa-robot text-2xl"></i>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <a href="#" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                AI Insights
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Get personalized reflections and patterns from your journal entries. Know yourself better.
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-pink-400" aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-600 ring-4 ring-white">
+                            <i class="fas fa-lock text-2xl"></i>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <a href="#" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                Secure & Private
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            End-to-end encryption ensures your thoughts stay private. Your data belongs only to you.
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-yellow-400" aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-green-50 text-green-600 ring-4 ring-white">
+                            <i class="fas fa-calendar-alt text-2xl"></i>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <a href="#" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                Daily Prompts
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Get thought-provoking questions to spark meaningful reflection and personal growth.
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-green-400" aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <span class="rounded-lg inline-flex p-3 bg-indigo-50 text-indigo-600 ring-4 ring-white">
+                            <i class="fas fa-mobile-alt text-2xl"></i>
+                        </span>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-lg font-medium">
+                            <a href="#" class="focus:outline-none">
+                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                Multi-Device Sync
+                            </a>
+                        </h3>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Access your journal anywhere. Seamlessly sync between phone, tablet, and computer.
+                        </p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-indigo-400" aria-hidden="true">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    How Vivid Voice Works
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+                    Transform your voice into powerful insights in just three simple steps
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                            <span class="text-xl font-bold">1</span>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Speak Your Mind</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Tap the microphone and share your thoughts, reflections, or daily entries using just your voice.
+                            </p>
+                        </div>
+                        <div class="absolute top-0 right-0 hidden lg:block h-full w-6">
+                            <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+                                <path d="M0 -2L20 40L0 82" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative mt-10 lg:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                            <span class="text-xl font-bold">2</span>
+                        </div>
+                        <div class="absolute top-0 right-0 hidden lg:block h-full w-6">
+                            <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+                                <path d="M0 -2L20 40L0 82" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Automatic Processing</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                We transcribe your speech, analyze for patterns, and organize your entries for easy review.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="mt-10 lg:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                            <span class="text-xl font-bold">3</span>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">Grow & Achieve</h3>
+                            <p class="mt-2 text-base text-gray-600">
+                                Get actionable insights, track goal progress, and see your personal growth over time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 flex justify-center">
+                    <div class="w-full max-w-md rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 p-0.5">
+                        <div class="bg-white rounded-lg p-8">
+                            <div class="flex items-center">
+                                <div class="voice-wave mr-3">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-gray-900">Sample Journal Entry:</h4>
+                                    <p class="text-sm text-gray-600">"Today was productive. I completed my project outline and set a goal to..."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    What Early Users Are Saying
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                    Don't just take our word for it. Here's what our beta testers have to say.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="p-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full" src="images/sarah.jpg" alt="Sarah J.">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-purple-600">Sarah J.</p>
+                                <div class="flex space-x-1">
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-600 italic">
+                                "As someone who struggles with writing, Vivid Voice has been a game-changer. I can finally express myself freely without staring at a blank page."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-purple-50 px-8 py-3">
+                        <p class="text-xs text-purple-600"><i class="fas fa-user-tie mr-1"></i> Creative Director</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="p-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full" src="images/miguel.jpg" alt="Miguel R.">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-purple-600">Miguel R.</p>
+                                <div class="flex space-x-1">
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-600 italic">
+                                "The goal tracking combined with voice journaling has helped me stay accountable like never before. I've achieved more in 3 months than the past year!"
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-purple-50 px-8 py-3">
+                        <p class="text-xs text-purple-600"><i class="fas fa-user-graduate mr-1"></i> Graduate Student</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                    <div class="p-8">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-10 w-10 rounded-full" src="images/priya.jpg" alt="Priya K.">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-purple-600">Priya K.</p>
+                                <div class="flex space-x-1">
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                    <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-base text-gray-600 italic">
+                                "The AI insights have helped me recognize patterns in my thinking I never noticed before. It's like having a personal therapist in my pocket."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-purple-50 px-8 py-3">
+                        <p class="text-xs text-purple-600"><i class="fas fa-user-md mr-1"></i> Healthcare Professional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="py-20 bg-gradient-to-r from-purple-600 to-pink-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div class="text-white">
+                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                        Join Our Waitlist
+                    </h2>
+                    <p class="mt-3 text-lg text-purple-100 max-w-2xl">
+                        Be among the first to experience Vivid Voice when we launch. Early signups will get exclusive access and a special welcome bonus.
+                    </p>
+                    <div class="mt-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 bg-purple-100 p-2 rounded-full">
+                                <i class="fas fa-gift text-purple-600"></i>
+                            </div>
+                            <p class="text-purple-100">Early signup bonus includes 3 months of premium features</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 bg-purple-100 p-2 rounded-full">
+                                <i class="fas fa-clock text-purple-600"></i>
+                            </div>
+                            <p class="text-purple-100">Launching in Q3 2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 lg:col-start-2">
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                        <div class="p-8">
+                            <h3 class="text-lg font-medium text-gray-900">Sign up for early access</h3>
+                            <p class="mt-1 text-sm text-gray-600">We'll notify you when we launch (no spam, promise)</p>
+                            <form class="mt-6 space-y-6" id="waitlist-form" onsubmit="submitWaitlist(event)">
+                                <div>
+                                    <label for="name" class="sr-only">Full name</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-gray-400"></i>
+                                        </div>
+                                        <input id="name" name="name" type="text" required class="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3" placeholder="Full name">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="email" class="sr-only">Email</label>
+                                    <div class="relative rounded-md shadow-sm">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-envelope text-gray-400"></i>
+                                        </div>
+                                        <input id="email" name="email" type="email" required class="focus:ring-purple-500 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3" placeholder="Your best email">
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="notifications" name="notifications" type="checkbox" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+                                    <label for="notifications" class="ml-2 block text-sm text-gray-900">
+                                        Send me product updates
+                                    </label>
+                                </div>
+                                <div id="form-success" class="hidden p-3 bg-green-50 text-green-700 rounded text-sm"></div>
+                                <div id="form-error" class="hidden p-3 bg-red-50 text-red-700 rounded text-sm"></div>
+                                <div>
+                                    <button type="submit" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-300 transform hover:scale-105">
+                                        Join Waitlist
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                            <p class="text-xs text-gray-500">By signing up, you agree to our <a href="#" class="text-purple-600 hover:text-purple-500">Privacy Policy</a>. We respect your inbox and won't spam you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Frequently Asked Questions
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
+                    Everything you need to know about Vivid Voice
+                </p>
+            </div>
+
+            <div class="mt-12">
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <!-- FAQ Item 1 -->
+                    <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
+                            <h3 class="text-lg font-medium text-gray-900">How is Vivid Voice different from regular voice notes?</h3>
+                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
+                            <p>Vivid Voice goes beyond simple voice recording by providing automatic transcription, organization, powerful search, and AI-driven insights to help you track patterns in your thinking and behaviors. Additionally, our integrated goal tracking system helps you turn reflections into actions.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
+                            <h3 class="text-lg font-medium text-gray-900">Is my data private and secure?</h3>
+                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
+                            <p>Absolutely. We use end-to-end encryption to protect your recordings and journal entries. Your data is never sold or shared with third parties, and you can delete your information at any time. Our business model is based on premium features, not on exploiting user data.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
+                            <h3 class="text-lg font-medium text-gray-900">Will there be a free version?</h3>
+                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
+                            <p>Yes, we'll offer a free version with basic journaling features. The premium version will unlock advanced capabilities like unlimited transcription, AI insights, custom goal tracking, and more. Early signups through this waitlist will receive a special extended free trial of premium features.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
+                            <h3 class="text-lg font-medium text-gray-900">What platforms will the app be available on?</h3>
+                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
+                            <p>At launch, Vivid Voice will be available for iOS and Android mobile devices, plus a web version. We're planning desktop applications for Mac and Windows shortly after launch, with all platforms syncing seamlessly through your secure account.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
+                            <h3 class="text-lg font-medium text-gray-900">Does Vivid Voice work offline?</h3>
+                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
+                            <p>Yes! You can record journal entries offline. The recordings will be securely uploaded and processed the next time you're online. Basic playback and review of previously recorded entries are also available offline.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-600">Still have questions?</p>
+                <div class="mt-3">
+                    <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-envelope mr-2"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <div class="flex items-center">
+                        <div class="voice-wave mr-2">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Vivid Voice</span>
+                    </div>
+                    <p class="text-gray-500 text-base">
+                        Helping you find your voice and achieve your goals through the power of speech.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-purple-500">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-500">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-500">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-500">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">
+                                Product
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#features" class="text-base text-gray-600 hover:text-purple-500">
+                                        Features
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#how-it-works" class="text-base text-gray-600 hover:text-purple-500">
+                                        How It Works
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        Pricing
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">
+                                Company
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        About
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        Careers
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">
+                                Legal
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        Privacy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        Terms
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">
+                                Resources
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#faq" class="text-base text-gray-600 hover:text-purple-500">
+                                        FAQ
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                        Help Center
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-200 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 Vivid Voice. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Waitlist form submission
+        function submitWaitlist(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('waitlist-form');
+            const success = document.getElementById('form-success');
+            const error = document.getElementById('form-error');
+            
+            // Reset messages
+            success.classList.add('hidden');
+            error.classList.add('hidden');
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // Simple validation
+            if(!name || !email) {
+                error.textContent = 'Please fill in all required fields.';
+                error.classList.remove('hidden');
+                return;
+            }
+            
+            // Here you would typically send the data to your backend
+            // For this example, we'll just show a success message
+            success.textContent = `Thanks, ${name}! You've been added to our waitlist. We'll email you at ${email} when we launch.`;
+            success.classList.remove('hidden');
+            
+            // Reset form
+            form.reset();
+            
+            // Scroll to show success message
+            success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Hide mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Scroll to target
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Christopher30/vivid-voice-waitlist" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>H
