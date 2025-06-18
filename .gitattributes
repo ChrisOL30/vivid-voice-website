@@ -41,3 +41,4 @@ JohnC.jpg filter=lfs diff=lfs merge=lfs -text
 Screenshot[[:space:]]2025-06-18[[:space:]]at[[:space:]]12.24.07.png filter=lfs diff=lfs merge=lfs -text
 Screenshot[[:space:]]2025-06-18[[:space:]]at[[:space:]]12.30.41.png filter=lfs diff=lfs merge=lfs -text
 IMG_2707.jpeg filter=lfs diff=lfs merge=lfs -text
+DeeOL.jpeg filter=lfs diff=lfs merge=lfs -text
