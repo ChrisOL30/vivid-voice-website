@@ -45,3 +45,4 @@ DeeOL.jpeg filter=lfs diff=lfs merge=lfs -text
 IMG_2923.jpeg filter=lfs diff=lfs merge=lfs -text
 VV.jpeg filter=lfs diff=lfs merge=lfs -text
 Vivid[[:space:]]Website.mp4 filter=lfs diff=lfs merge=lfs -text
+vivid-website.mp4 filter=lfs diff=lfs merge=lfs -text
