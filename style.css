@@ -1,8 +1,21 @@
+
 body {
 	padding: 2rem;
 	font-family: -apple-system, BlinkMacSystemFont, "Arial", sans-serif;
 }
 
+@media (max-width: 640px) {
+  section#waitlist div[class*="max-w-7xl"] {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  section#waitlist .lg\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  section#waitlist .lg\:col-start-2 {
+    margin-top: 2rem;
+  }
+}
 h1 {
 	font-size: 16px;
 	margin-top: 0;
