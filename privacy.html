@@ -50,17 +50,197 @@
     </header>
 
     <article class="card">
-      <!-- Rest of the privacy policy content remains the same -->
       <section class="section">
         <p>Welcome to Vivid Voice, a wellbeing and journaling app. This Privacy Policy explains what we collect, how we store and use your data, how we protect it, your rights, and how to contact us. By using Vivid Voice, you agree to this Policy.</p>
       </section>
 
-      <!-- All other sections -->
-      
+      <section id="info" class="section">
+        <h2>1. Information We Collect</h2>
+        <h3>1.1 Information You Provide</h3>
+        <h4>Account Information</h4>
+        <ul>
+          <li>Name (2-50 characters)</li>
+          <li>Email (validated and verified via OTP)</li>
+          <li>Password (bcrypt hashed; never stored in plain text)</li>
+          <li>Email verification status</li>
+          <li>Profile image (optional)</li>
+        </ul>
+        <h4>Voice Notes & Audio Journals</h4>
+        <ul>
+          <li>Audio sent via HTTPS to backend</li>
+          <li>Stored in AWS S3 with AES-256 encryption</li>
+          <li>No local storage beyond temporary playback cache</li>
+          <li>Formats: m4a, mp3, wav, aac, ogg (max 50MB)</li>
+        </ul>
+        <h4>Text Entries & Journaling Data</h4>
+        <ul>
+          <li>Daily voice journal responses (text/audio)</li>
+          <li>Custom journal prompts</li>
+          <li>Daily mood ratings (0-10) and weekly averages</li>
+          <li>Calendar highlights and prompt schedules</li>
+        </ul>
+        <h4>Goals & Progress Tracking</h4>
+        <ul>
+          <li>Title, category, optional deadline</li>
+          <li>Video (mp4, mov, avi, wmv up to 100MB)</li>
+          <li>Cover image (jpg, jpeg, png, gif up to 100MB)</li>
+          <li>Progress percentage, completion status/timestamp</li>
+        </ul>
+        <h4>Vision Board & Achievements</h4>
+        <ul>
+          <li>Vision board entries and achievement folders</li>
+          <li>Images/videos stored in AWS S3 (AES-256)</li>
+          <li>Images: jpg, jpeg, png, gif, heic (10MB journal, 100MB goals)</li>
+          <li>Videos: mp4, mov, avi, wmv (100MB)</li>
+        </ul>
+
+        <h3>1.2 Information Collected Automatically</h3>
+        <h4>Device Information</h4>
+        <ul>
+          <li>Device ID (X-Device-ID), device type/model (User-Agent)</li>
+          <li>App version (X-App-Version), platform (X-Platform)</li>
+          <li>IP address (security/abuse prevention)</li>
+        </ul>
+        <p>Validated on every API request and stored in user_devices.</p>
+        <h4>Authentication & Session Data</h4>
+        <p>OAuth2 (Laravel Passport) tokens (valid 6 months) with server-side sessions and remember tokens.</p>
+        <h4>Usage Data</h4>
+        <p>Aggregated, non-PII usage patterns (prompts, responses, goals, calendar activity).</p>
+        <h4>Subscription & Payment</h4>
+        <p>Apple IAP data: original transaction ID, product ID, status, purchase/expiry dates, trial status, environment, JWS representation. No card data stored; Apple processes payments.</p>
+        <h4>Error & Diagnostic</h4>
+        <p>Error logs, stack traces, request details, performance metrics; retained up to 14 days.</p>
+      </section>
+
+      <section id="use" class="section">
+        <h2>2. How We Use Your Information</h2>
+        <h3>Core App Functionality</h3>
+        <p>Save recordings, notes, goals, ratings, and images; sync across devices; show calendar/dashboard; manage prompts and schedules; calculate mood averages; process subscriptions.</p>
+        <h3>Authentication & Security</h3>
+        <p>Verify identity via OTP; manage secure sessions; prevent unauthorized access and abuse.</p>
+        <h3>Improving the App</h3>
+        <p>Understand usage, fix issues, enhance UX, optimize performance.</p>
+        <h3>Communication</h3>
+        <p>Send OTPs, password reset codes, and critical service alerts. No marketing without consent; no ad use.</p>
+        <h3>Subscription Management</h3>
+        <p>Validate status with Apple, process webhooks, enforce premium access, handle refunds/cancellations through Apple.</p>
+      </section>
+
+      <section id="storage" class="section">
+        <h2>3. How and Where Your Data Is Stored</h2>
+        <h3>Cloud Storage via AWS S3</h3>
+        <ul>
+          <li>AES-256 encryption at rest; HTTPS/TLS in transit</li>
+          <li>Redundant, private buckets; signed URLs (30 minutes)</li>
+          <li>Profile images, voice journals, goals, visions, achievements organized by user and resource IDs</li>
+        </ul>
+        <h3>Backend Database (MySQL)</h3>
+        <ul>
+          <li>User profiles, auth data, prompts/metadata</li>
+          <li>Daily ratings, goal/vision metadata, subscription records, device registrations</li>
+          <li>SSL/TLS, backups, restricted access, firewall isolation</li>
+        </ul>
+        <h3>Data Retention Location</h3>
+        <p>Primary AWS region (specify), backups in multi-region replication for DR.</p>
+      </section>
+
+      <section id="security" class="section">
+        <h2>4. How We Protect Your Information</h2>
+        <h3>Technical Safeguards</h3>
+        <ul>
+          <li>HTTPS/TLS for all APIs</li>
+          <li>OAuth2 token auth; bcrypt password hashing</li>
+          <li>AES-256 S3 encryption; API rate limiting</li>
+          <li>CORS protections, SQL injection prevention, XSS protection</li>
+        </ul>
+        <h3>Access Controls</h3>
+        <ul>
+          <li>Role-based access</li>
+          <li>Device validation; token expiration/revocation</li>
+          <li>Optional single-device enforcement</li>
+        </ul>
+        <h3>Infrastructure Security</h3>
+        <ul>
+          <li>AWS best practices; firewalls; updates</li>
+          <li>Automated vulnerability scanning; DDoS protection (AWS Shield)</li>
+        </ul>
+        <h3>Monitoring & Auditing</h3>
+        <ul>
+          <li>Comprehensive logging, error tracking, alerts</li>
+          <li>Suspicious activity detection; webhook verification</li>
+        </ul>
+        <p class="callout">No system is 100% secure. Use strong passwords and keep credentials confidential.</p>
+      </section>
+
+      <section id="sharing" class="section">
+        <h2>5. Sharing Your Data</h2>
+        <p>We do not sell or rent your data. Sharing is limited to:</p>
+        <h3>With Your Explicit Consent</h3>
+        <p>Optional sharing of content for social/community features.</p>
+        <h3>With Service Providers</h3>
+        <ul>
+          <li>AWS (hosting/storage; encrypted, controlled access)</li>
+          <li>Apple (IAP transaction data)</li>
+          <li>Mailgun (OTP emails; TLS)</li>
+        </ul>
+        <p>Providers are contractually bound to protect data and use it only to support the App.</p>
+        <h3>For Legal Reasons</h3>
+        <p>To comply with law, protect rights, prevent fraud/abuse; notice provided when legally allowed.</p>
+        <h3>Business Transfers</h3>
+        <p>Data may transfer in mergers/acquisitions; new entity must honor this Policy.</p>
+      </section>
+
+      <section id="retention" class="section">
+        <h2>6. Data Retention</h2>
+        <p>Retained while account is active or as needed legally/business-wise. Inactive accounts may be reminded, archived, then deleted. After account deletion: active DB removal immediately, S3 deletion, backups purged within 30 days; irreversible. Legal exceptions may apply.</p>
+      </section>
+
+      <section id="rights" class="section">
+        <h2>7. Your Rights & Data Deletion</h2>
+        <h3>Access & Correct</h3>
+        <p>Access data in-app; update name, image, entries, goals, visions, prompts, ratings.</p>
+        <h3>Delete Content</h3>
+        <p>Delete audio notes, goals, visions, journal entries, achievements. Removal from S3 is immediate and irreversible.</p>
+        <h3>Full Account Deletion</h3>
+        <p>Email [your-support@example.com] from your registered address with name and email. Identity verification may require OTP. Process within 7 business days; deletion is irreversible. Cancel Apple subscriptions separately.</p>
+        <h3>Data Portability & Opt-Out</h3>
+        <p>Request export (provided within 30 days). Opt-out of non-essential communications via app settings or contact us. Critical service emails cannot be skipped while account is active.</p>
+      </section>
+
+      <section id="children" class="section">
+        <h2>8. Children's Privacy</h2>
+        <p>Not intended for children under 13. If data from a child is found, it will be deleted. Parents/guardians: contact us immediately.</p>
+      </section>
+
+      <section id="transfers" class="section">
+        <h2>9. International Data Transfers</h2>
+        <p>Data may be processed in the US, EU, and other regions where providers operate. Transfers follow applicable laws (GDPR, SCCs, AWS DPA). Using the App consents to these transfers.</p>
+      </section>
+
+      <section id="links" class="section">
+        <h2>10. Third-Party Links & Integrations</h2>
+        <p>Links to third-party services (AWS, Apple, Mailgun) are not covered by this Policy. Review their privacy notices.</p>
+      </section>
+
+      <section id="changes" class="section">
+        <h2>11. Changes to This Privacy Policy</h2>
+        <p>We may update this Policy; new Last Updated date will appear here. Material changes may be emailed or shown in-app. Continued use means acceptance. Version history: v1.0 (Dec 9, 2025).</p>
+      </section>
+
+      <section id="consent" class="section">
+        <h2>12. Your Consent</h2>
+        <p>By using Vivid Voice, you consent to this Policy, data collection/use/storage, international transfers, and processing by our providers. Withdraw consent by deleting your account.</p>
+      </section>
+
       <section id="contact" class="section">
         <h2>13. Contact & Data Protection</h2>
-        <p>Email: vividvoice.app@gmail.com | Response within 7 business days.</p>
+        <p>Email: [your-support@example.com] | Website: [your-website.com] | Response within 7 business days.</p>
         <p>Include name, registered email, and request details for deletion, access, or questions.</p>
+      </section>
+
+      <section id="compliance" class="section">
+        <h2>14. Legal Compliance</h2>
+        <p>We align with GDPR, CCPA, COPPA, and operate on HIPAA-eligible AWS infrastructure. GDPR rights include access, rectification, erasure, portability, restriction, and objection—contact us to exercise them.</p>
       </section>
 
       <p class="footer-note">Thank you for trusting Vivid Voice. Your privacy matters.</p>
