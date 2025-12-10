@@ -5,8 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vivid Voice – Privacy Policy</title>
   <link rel="stylesheet" href="terms_style.css">
+  <style>
+    .voice-wave {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 40px;
+      height: 30px;
+    }
+    .voice-wave div {
+      height: 8px;
+      width: 4px;
+      background: #8b5cf6;
+      border-radius: 4px;
+      animation: voice-wave-animation 1.2s infinite ease-in-out;
+    }
+    .voice-wave div:nth-child(1) {
+      animation-delay: -0.4s;
+    }
+    .voice-wave div:nth-child(2) {
+      animation-delay: -0.2s;
+    }
+    .voice-wave div:nth-child(3) {
+      animation-delay: 0s;
+    }
+    @keyframes voice-wave-animation {
+      0%, 100% {
+        height: 8px;
+      }
+      50% {
+        height: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav style="background: #fff; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <a href="index.html" style="font-weight: 600; font-size: 18px; color: linear-gradient(to right, #9333ea, #e8489d); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+        <div class="voice-wave">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <span style="background: linear-gradient(to right, #9333ea, #e8489d); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Vivid Voice</span>
+      </a>
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <a href="/index.html" style="color: #4a5568; text-decoration: none; font-size: 14px; font-weight: 500;">Home</a>
+        <a href="/terms.html" style="color: #4a5568; text-decoration: none; font-size: 14px; font-weight: 500;">Terms</a>
+        <a href="/privacy.html" style="color: #2f6fed; text-decoration: none; font-size: 14px; font-weight: 600;">Privacy</a>
+      </div>
+    </div>
+  </nav>
   <div class="page">
     <header class="header">
       <h1>Privacy Policy</h1>
@@ -223,5 +273,16 @@
       <p class="footer-note">Thank you for trusting Vivid Voice. Your privacy matters.</p>
     </article>
   </div>
+  <footer style="background: #f7f9fc; border-top: 1px solid #e5e7eb; margin-top: 48px; padding: 32px 20px;">
+    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+      <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap;">
+        <a href="/index.html" style="color: #4a5568; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">Home</a>
+        <a href="/terms.html" style="color: #4a5568; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">Terms of Use</a>
+        <a href="/privacy.html" style="color: #2f6fed; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">Privacy Policy</a>
+        <a href="mailto:developervividvoice@gmail.com" style="color: #4a5568; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;">Contact</a>
+      </div>
+      <p style="color: #4a5568; font-size: 14px; margin: 0;">&copy; 2025 Vivid Voice. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
