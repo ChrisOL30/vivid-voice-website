@@ -528,7 +528,41 @@
         </div>
     </section>
 
-    <!-- Waitlist Section -->
+    <!-- Founder Story Section -->
+    <section id="story" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div>
+                    <span class="inline-flex items-center gap-2 text-orange-600 font-semibold text-sm uppercase tracking-wider">
+                        <i class="fas fa-heart"></i> Behind the app
+                    </span>
+                    <h2 class="mt-3 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        Built from rock bottom
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Vivid Voice was born from a real recovery story, not a boardroom. Our founder jogged alongside Ger's Guinness World Records attempt of 60 marathons in 60 days for cancer research — the same drive to keep showing up, one step at a time, is what Vivid Voice is built to help you carry into your own goals.
+                    </p>
+                    <a href="https://www.instagram.com/vividvoice_app/" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 text-orange-600 font-medium hover:text-orange-700">
+                        <i class="fab fa-instagram"></i> Follow the journey on Instagram
+                    </a>
+                </div>
+                <div class="mt-10 lg:mt-0">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-black">
+                        <video
+                            class="w-full aspect-[9/10] object-cover"
+                            controls
+                            playsinline
+                            preload="metadata"
+                            poster="founder-story-poster.jpg">
+                            <source src="founder-story.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
     <section id="download" class="relative py-20 bg-gradient-to-br from-orange-600 via-orange-500 to-pink-500 overflow-hidden">
         <div class="absolute -top-16 -right-16 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-24 -left-16 w-80 h-80 bg-black/10 rounded-full blur-3xl"></div>
@@ -778,42 +812,7 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
-        
-        // Waitlist form submission
-        function submitWaitlist(event) {
-            event.preventDefault();
-            
-            const form = document.getElementById('waitlist-form');
-            const success = document.getElementById('form-success');
-            const error = document.getElementById('form-error');
-            
-            // Reset messages
-            success.classList.add('hidden');
-            error.classList.add('hidden');
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            
-            // Simple validation
-            if(!name || !email) {
-                error.textContent = 'Please fill in all required fields.';
-                error.classList.remove('hidden');
-                return;
-            }
-            
-            // Here you would typically send the data to your backend
-            // For this example, we'll just show a success message
-            success.textContent = `Thanks, ${name}! You've been added to our waitlist. We'll email you at ${email} when we launch.`;
-            success.classList.remove('hidden');
-            
-            // Reset form
-            form.reset();
-            
-            // Scroll to show success message
-            success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
