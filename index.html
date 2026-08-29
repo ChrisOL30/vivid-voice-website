@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivid Voice - Voice Journal & Goal Setting App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         /* Custom animations */
         @keyframes float {
@@ -17,7 +33,7 @@
         }
         /* Radial gradient background */
         .radial-gradient {
-            background: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.1) 0%, rgba(255, 255, 255, 1) 20%);
+            background: radial-gradient(circle at 10% 20%, rgba(249, 115, 22, 0.1) 0%, rgba(255, 255, 255, 1) 20%);
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -27,7 +43,7 @@
             background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #8b5cf6;
+            background: #f97316;
             border-radius: 4px;
         }
         /* Voice wave animation */
@@ -41,7 +57,7 @@
         .voice-wave div {
             height: 10px;
             width: 6px;
-            background: #8b5cf6;
+            background: #f97316;
             border-radius: 5px;
             animation: voice-wave-animation 1.2s infinite ease-in-out;
         }
@@ -98,16 +114,16 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-b-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-putple-50">Features</a>
-                <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-purple-50">How It Works</a>
-                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-purple-50">Testimonials</a>
-                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-purple-50">FAQs / T&Cs</a>
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-orange-50">Features</a>
+                <a href="#how-it-works" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-orange-50">How It Works</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-orange-50">Testimonials</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-orange-50">FAQs / T&Cs</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="main" class="relative radial-gradient pt-10 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="main" class="relative radial-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
 <div class="max-w-7xl mx-auto">
             <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                 <div class="relative z-10">
@@ -141,22 +157,22 @@
                     <div class="relative mx-auto w-full max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-none lg:px-0">
                         <!-- Illustration -->
                         <div class="relative overflow-hidden rounded-2xl shadow-2xl">
-                      <img class="w-full" src="https://christopher30-www-vividvoice-co-uk.static.hf.space/VV.jpeg" alt="Record">                          <div class="absolute inset-0 bg-gradient-to-t from-purple-600/30 to-transparent p-6 flex items-end">
+                      <img class="w-full" src="https://christopher30-www-vividvoice-co-uk.static.hf.space/VV.jpeg" alt="Record">                          <div class="absolute inset-0 bg-gradient-to-t from-orange-600/30 to-transparent p-6 flex items-end">
                                 <div class="w-full bg-white/90 backdrop-blur-sm rounded-xl p-4">
                                     <div class="flex items-center">
-                                        <div class="p-2 bg-purple-100 rounded-full shadow-lg">
-                                            <i class="fas fa-microphone text-purple-600 text-xl"></i>
+                                        <div class="p-2 bg-orange-100 rounded-full shadow-lg">
+                                            <i class="fas fa-microphone text-orange-600 text-xl"></i>
                                         </div>
                                         <div class="ml-4">
                                             <p class="text-gray-900 font-medium">What's on my mind?</p>
-                                            <p class="text-purple-600 text-sm">Daily reflection • 1:24 min</p>
+                                            <p class="text-orange-600 text-sm">Daily reflection • 1:24 min</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-purple-200 rounded-full opacity-70 mix-blend-multiply filter blur-xl"></div>
+                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-orange-200 rounded-full opacity-70 mix-blend-multiply filter blur-xl"></div>
                     <div class="absolute -top-8 -right-8 w-32 h-32 bg-pink-200 rounded-full opacity-70 mix-blend-multiply filter blur-xl"></div>
                 </div>
             </div>
@@ -177,9 +193,9 @@
 
             <div class="mt-16 grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- Feature 1 -->
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div>
-                        <span class="rounded-lg inline-flex p-3 bg-purple-50 text-purple-600 ring-4 ring-white">
+                        <span class="rounded-lg inline-flex p-3 bg-orange-50 text-orange-600 ring-4 ring-white">
                             <i class="fas fa-microphone text-2xl"></i>
                         </span>
                     </div>
@@ -195,13 +211,13 @@
                            
                         </p>
                     </div>
-                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-purple-400" aria-hidden="true">
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-orange-400" aria-hidden="true">
                         <i class="fas fa-arrow-right"></i>
                     </span>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div>
                         <span class="rounded-lg inline-flex p-3 bg-blue-50 text-blue-600 ring-4 ring-white">
                             <i class="fas fa-bullseye text-2xl"></i>
@@ -215,7 +231,7 @@
                             </a>
                         </h3>
                         <p class="mt-2 text-sm text-gray-500">
-                            Record and catogorize your goal with clear due dates, commit with a signed digital contract, and monitor progress with ease for a structured path to success.
+                            Record and categorize your goal with clear due dates, commit with a signed digital contract, and monitor progress with ease for a structured path to success.
                         </p>
                     </div>
                     <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-blue-400" aria-hidden="true">
@@ -224,7 +240,7 @@
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div>
                         <span class="rounded-lg inline-flex p-3 bg-pink-50 text-pink-600 ring-4 ring-white">
                            <i class="fa-sharp fa-regular fa-eye text-2xl"></i>
@@ -247,7 +263,7 @@
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div>
                         <span class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-600 ring-4 ring-white">
                             <i class="fas fa-lock text-2xl"></i>
@@ -261,7 +277,7 @@
                             </a>
                         </h3>
                         <p class="mt-2 text-sm text-gray-500">
-                            Your data is encrypted and securely stored using industry standard cloud infastructure.
+                            Your data is encrypted and securely stored using industry standard cloud infrastructure.
                         </p>
                     </div>
                     <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-yellow-400" aria-hidden="true">
@@ -270,7 +286,7 @@
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div>
                         <span class="rounded-lg inline-flex p-3 bg-green-50 text-green-600 ring-4 ring-white">
                             <i class="fas fa-calendar-alt text-2xl"></i>
@@ -284,7 +300,7 @@
                             </a>
                         </h3>
                         <p class="mt-2 text-sm text-gray-500">
-                            Color-coded calendar reflecting daily mood ratings. Track paterns, boost self-awareness, and gain insights with an ituitive overview of your journey.
+                            Color-coded calendar reflecting daily mood ratings. Track patterns, boost self-awareness, and gain insights with an intuitive overview of your journey.
                         </p>
                     </div>
                     <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-green-400" aria-hidden="true">
@@ -293,7 +309,7 @@
                 </div>
 
                 <!-- Feature 6 -->
-                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div class="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-orange-500 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                     <div>
                         <span class="rounded-lg inline-flex p-3 bg-indigo-50 text-indigo-600 ring-4 ring-white">
                             <i class="fa-sharp fa-regular fa-circle-check text-2xl"></i>
@@ -334,7 +350,7 @@
                 <div class="lg:grid lg:grid-cols-3 lg:gap-8">
                     <!-- Step 1 -->
                     <div class="relative">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
                             <span class="text-xl font-bold">1</span>
                         </div>
                         <div class="mt-5">
@@ -352,7 +368,7 @@
 
                     <!-- Step 2 -->
                     <div class="relative mt-10 lg:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
                             <span class="text-xl font-bold">2</span>
                         </div>
                         <div class="absolute top-0 right-0 hidden lg:block h-full w-6">
@@ -370,7 +386,7 @@
 
                     <!-- Step 3 -->
                     <div class="mt-10 lg:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
                             <span class="text-xl font-bold">3</span>
                         </div>
                         <div class="mt-5">
@@ -383,7 +399,7 @@
                 </div>
 
                 <div class="mt-16 flex justify-center">
-                    <div class="w-full max-w-md rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 p-0.5">
+                    <div class="w-full max-w-md rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 p-0.5">
                         <div class="bg-white rounded-lg p-8">
                             <div class="flex items-center">
                                 <div class="voice-wave mr-3">
@@ -421,12 +437,12 @@
                     <div class="p-8">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
-                                <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                                    <i class="fas fa-user text-purple-500"></i>
+                                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white text-sm font-semibold">
+                                    JC
                                 </div>
 </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-purple-600">John C.</p>
+                                <p class="text-sm font-medium text-orange-600">John C.</p>
                                 <div class="flex space-x-1">
                                     <i class="fas fa-star text-yellow-400 text-xs"></i>
                                     <i class="fas fa-star text-yellow-400 text-xs"></i>
@@ -442,8 +458,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="bg-purple-50 px-8 py-3">
-                        <p class="text-xs text-purple-600"><i class="fas fa-user-tie mr-1"></i> Lxry-Jewellers</p>
+                    <div class="bg-orange-50 px-8 py-3">
+                        <p class="text-xs text-orange-600"><i class="fas fa-user-tie mr-1"></i> Lxry-Jewellers</p>
                     </div>
                 </div>
 
@@ -452,12 +468,12 @@
                     <div class="p-8">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
-                                <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                                    <i class="fas fa-user text-purple-500"></i>
+                                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white text-sm font-semibold">
+                                    KG
                                 </div>
 </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-purple-600">Kimberly G.</p>
+                                <p class="text-sm font-medium text-orange-600">Kimberly G.</p>
                                 <div class="flex space-x-1">
                                     <i class="fas fa-star text-yellow-400 text-xs"></i>
                                     <i class="fas fa-star text-yellow-400 text-xs"></i>
@@ -473,8 +489,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="bg-purple-50 px-8 py-3">
-                        <p class="text-xs text-purple-600"><i class="fas fa-user-graduate mr-1"></i> Teacher </p>
+                    <div class="bg-orange-50 px-8 py-3">
+                        <p class="text-xs text-orange-600"><i class="fas fa-user-graduate mr-1"></i> Teacher</p>
                     </div>
                 </div>
 
@@ -483,12 +499,12 @@
                     <div class="p-8">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
-                                <div class="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                                    <i class="fas fa-user text-purple-500"></i>
+                                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white text-sm font-semibold">
+                                    DO
                                 </div>
 </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-purple-600">Deirdre O'L.</p>
+                                <p class="text-sm font-medium text-orange-600">Deirdre O'L.</p>
                                 <div class="flex space-x-1">
                                     <i class="fas fa-star text-yellow-400 text-xs"></i>
                                     <i class="fas fa-star text-yellow-400 text-xs"></i>
@@ -504,8 +520,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="bg-purple-50 px-8 py-3">
-                        <p class="text-xs text-purple-600"><i class="fas fa-user-md mr-1"></i> Manager-Argent</p>
+                    <div class="bg-orange-50 px-8 py-3">
+                        <p class="text-xs text-orange-600"><i class="fas fa-user-md mr-1"></i> Manager-Argent</p>
                     </div>
                 </div>
             </div>
@@ -513,89 +529,40 @@
     </section>
 
     <!-- Waitlist Section -->
-    <section id="waitlist" class="py-20 bg-gradient-to-r from-purple-600 to-pink-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-                <div class="text-white">
-                    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                        Join Our Waitlist
-                    </h2>
-                    <p class="mt-3 text-lg text-purple-100 max-w-2xl">
-                        Be among the first to experience Vivid Voice when we launch. Early signups will get exclusive access and a special welcome bonus & access to our Speak it Squad group chat. Giveaways, goal - sharing & behind the scenes.
-                    </p>
-                    <div class="mt-8">
-                        <div class="flex items-center space-x-4">
-                            <div class="flex-shrink-0 bg-purple-100 p-2 rounded-full">
-                                <i class="fas fa-gift text-purple-600"></i>
-                            </div>
-                            <p class="text-purple-100">Early signup bonus includes exclusive access</p>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="flex-shrink-0 bg-purple-100 p-2 rounded-full">
-                                <i class="fas fa-clock text-purple-600"></i>
-                            </div>
-                            <p class="text-purple-100">Launch date announced soon</p>
-                        </div>
-                    </div>
+    <section id="download" class="relative py-20 bg-gradient-to-br from-orange-600 via-orange-500 to-pink-500 overflow-hidden">
+        <div class="absolute -top-16 -right-16 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-16 w-80 h-80 bg-black/10 rounded-full blur-3xl"></div>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-semibold px-4 py-1.5 rounded-full backdrop-blur-sm">
+                <i class="fas fa-circle-check"></i> Available now on the App Store
+            </span>
+            <h2 class="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+                Your voice, your goals,<br class="hidden sm:block"> your next chapter starts today
+            </h2>
+            <p class="mt-4 text-lg text-orange-50 max-w-2xl mx-auto">
+                Download Vivid Voice and turn your first thought into your first breakthrough. No waitlist, no waiting — just press record.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://apps.apple.com/app/6755194319" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white text-gray-900 font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    <i class="fab fa-apple text-2xl"></i>
+                    <span class="text-left leading-tight">
+                        <span class="block text-xs font-normal text-gray-500">Download on the</span>
+                        <span class="block">App Store</span>
+                    </span>
+                </a>
+                <a href="#features" class="inline-flex items-center justify-center px-8 py-4 rounded-xl border-2 border-white/70 text-white font-semibold text-lg hover:bg-white/10 transition-all duration-300">
+                    See what's inside
+                </a>
+            </div>
+            <div class="mt-8 flex items-center justify-center gap-2 text-orange-50">
+                <div class="flex space-x-1">
+                    <i class="fas fa-star text-yellow-300"></i>
+                    <i class="fas fa-star text-yellow-300"></i>
+                    <i class="fas fa-star text-yellow-300"></i>
+                    <i class="fas fa-star text-yellow-300"></i>
+                    <i class="fas fa-star text-yellow-300"></i>
                 </div>
-                <div class="mt-12 lg:mt-0 lg:col-start-2">
-                    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-                        <div class="p-8">
-                            <h3 class="text-lg font-medium text-gray-900 px-2 sm:px-0">Sign up for early access</h3>
-                            <p class="mt-1 text-sm text-gray-600 px-2 sm:px-0">We'll notify you when we launch (no spam, promise)</p>
-                            <form action="https://formspree.io/f/mblykzkd" method="POST">
-                              <div class="mb-4 px-2 sm:px-0">
-                                  <label for="name" class="sr-only">Full name</label>
-                                  <div class="relative flex items-center">
-                                    <span class="absolute left-0 pl-3 flex items-center h-full text-gray-400">
-                                      <i class="fas fa-user"></i>
-                                    </span>
-                                    <input
-                                      id="name"
-                                      name="name"
-                                      type="text"
-                                      required
-                                      class="block w-full pl-10 pr-3 py-3.5 border border-gray-300 rounded-lg bg-white focus:ring-1 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 sm:text-sm"
-                                      placeholder="Your full name"
->
-                                </div>
-                              </div>
-                              <div class="mb-4 px-2 sm:px-0">
-                                <label for="email" class="sr-only">Email address</label>
-                                <div class="relative flex items-center">
-                                  <span class="absolute left-0 pl-3 flex items-center h-full text-gray-400">
-                                    <i class="fas fa-envelope"></i>
-                                  </span>
-                                  <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    required
-                                    class="block w-full pl-10 pr-3 py-3.5 border border-gray-300 rounded-lg bg-white focus:ring-1 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 sm:text-sm"
-placeholder="Your email address"
-                                  >
-                                </div>
-                              </div>
-                                <div class="flex items-center pl-10 pr-3 py-6">
-                                  <input id="notifications" name="notifications" type="checkbox" class="h-5 w-5 text-purple-600 focus:ring-purple-500 border-gray-300 rounded-md cursor-pointer transition-all duration-200 ease-in-out">
-                                  <label for="notifications" class="ml-3 text-sm font-medium text-gray-900 cursor-pointer hover:text-gray-700 transition-colors duration-150">
-Send me product updates
-                                  </label>
-                                </div>
-                                <div class="mt-4 px-2 sm:px-0">
-                                  <button type="submit" class="w-full flex justify-center items-center py-5 px-6 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-300 hover:brightness-105 hover:scale-[1.01] transform cursor-pointer">
-Join Waitlist
-                                </button>
-                              </div>
-</form>
-                        </div>
-                        <div class="px-6 pt-5 pb-6 bg-gray-50 border-t border-gray-200">
-<p class="text-xs text-gray-500">By signing up, you agree to our <a href="#" class="text-purple-600 hover:text-purple-500">Privacy Policy</a>. We respect your inbox and won't spam you.</p>
-                        </div>
-                    </div>
-                </div>
+                <span class="text-sm">Rated 5/5 by early testers</span>
             </div>
         </div>
     </section>
@@ -618,7 +585,7 @@ Join Waitlist
                     <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
                         <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
                             <h3 class="text-lg font-medium text-gray-900">How is Vivid Voice different from regular voice notes?</h3>
-                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 text-orange-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
@@ -631,12 +598,12 @@ Join Waitlist
                     <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
                         <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
                             <h3 class="text-lg font-medium text-gray-900">Is my data private and secure?</h3>
-                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 text-orange-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
                         <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
-                            <p>Absolutely. Your recordings and journal entries are encrypted and securely stored using industry standard cloud infastructure. We are privacy-first by design. Your data is never sold or shared with third parties.</p>
+                            <p>Absolutely. Your recordings and journal entries are encrypted and securely stored using industry standard cloud infrastructure. We are privacy-first by design. Your data is never sold or shared with third parties.</p>
                         </div>
                     </div>
 
@@ -644,7 +611,7 @@ Join Waitlist
                     <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
                         <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
                             <h3 class="text-lg font-medium text-gray-900">What platforms will the app be available on?</h3>
-                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 text-orange-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
@@ -657,7 +624,7 @@ Join Waitlist
                     <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
                         <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
                             <h3 class="text-lg font-medium text-gray-900">How does subscriptions, billing and cancellations work?</h3>
-                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 text-orange-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
@@ -670,12 +637,12 @@ Join Waitlist
                     <div x-data="{ open: false }" class="border border-gray-200 rounded-lg overflow-hidden">
                         <button @click="open = !open" class="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50">
                             <h3 class="text-lg font-medium text-gray-900">Does Vivid Voice work offline?</h3>
-                            <svg class="h-6 w-6 text-purple-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 text-orange-500" :class="{ 'transform rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
                         <div x-show="open" x-collapse class="px-5 pb-5 text-gray-600">
-                            <p> An internet is currently required to save and sync recordings securely. Offline recording is something we're sctively exploring for future updates as the product evolves.</p>
+                            <p> An internet connection is currently required to save and sync recordings securely. Offline recording is something we're actively exploring for future updates as the product evolves.</p>
                         </div>
                     </div>
                 </div>
@@ -684,7 +651,7 @@ Join Waitlist
             <div class="mt-12 text-center">
                 <p class="text-gray-600">Still have questions?</p>
                 <div class="mt-3">
-                    <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition duration-300 transform hover:scale-105">
+                    <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition duration-300 transform hover:scale-105">
                         <i class="fas fa-envelope mr-2"></i> vividvoice.app@gmail.com
                     </a>
                 </div>
@@ -703,23 +670,17 @@ Join Waitlist
                             <div></div>
                             <div></div>
                         </div>
-                        <span class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Vivid Voice</span>
+                        <span class="text-xl font-bold bg-gradient-to-r from-orange-600 to-pink-500 bg-clip-text text-transparent">Vivid Voice</span>
                     </div>
                     <p class="text-gray-500 text-base">
                         Helping you find your voice and achieve your goals through the power of speech.
                     </p>
                     <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-purple-500">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://www.instagram.com/vividvoice_app/" target="_blank" rel="noopener" class="text-gray-400 hover:text-orange-500 transition-colors" aria-label="Vivid Voice on Instagram">
+                            <i class="fab fa-instagram text-xl"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-purple-500">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-purple-500">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-purple-500">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="mailto:vividvoice.app@gmail.com" class="text-gray-400 hover:text-orange-500 transition-colors" aria-label="Email Vivid Voice">
+                            <i class="fas fa-envelope text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -731,40 +692,35 @@ Join Waitlist
                             </h3>
                             <ul class="mt-4 space-y-4">
                                 <li>
-                                    <a href="#features" class="text-base text-gray-600 hover:text-purple-500">
+                                    <a href="#features" class="text-base text-gray-600 hover:text-orange-500">
                                         Features
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#how-it-works" class="text-base text-gray-600 hover:text-purple-500">
+                                    <a href="#how-it-works" class="text-base text-gray-600 hover:text-orange-500">
                                         How It Works
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
-                                        Pricing
+                                    <a href="https://apps.apple.com/app/6755194319" class="text-base text-gray-600 hover:text-orange-500">
+                                        Download
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div class="mt-12 md:mt-0">
                             <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">
-                                Company
+                                Connect
                             </h3>
                             <ul class="mt-4 space-y-4">
                                 <li>
-                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
-                                        About
+                                    <a href="https://www.instagram.com/vividvoice_app/" target="_blank" rel="noopener" class="text-base text-gray-600 hover:text-orange-500">
+                                        Instagram
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
-                                        Careers
+                                    <a href="mailto:vividvoice.app@gmail.com" class="text-base text-gray-600 hover:text-orange-500">
+                                        Email Us
                                     </a>
                                 </li>
                             </ul>
@@ -777,12 +733,12 @@ Join Waitlist
                             </h3>
                             <ul class="mt-4 space-y-4">
                                 <li>
-                                    <a href="/privacy.html" class="text-base text-gray-600 hover:text-purple-500">
+                                    <a href="/privacy.html" class="text-base text-gray-600 hover:text-orange-500">
                                         Privacy
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/terms.html" class="text-base text-gray-600 hover:text-purple-500">
+                                    <a href="/terms.html" class="text-base text-gray-600 hover:text-orange-500">
                                         Terms of Use
                                     </a>
                                 </li>
@@ -794,12 +750,12 @@ Join Waitlist
                             </h3>
                             <ul class="mt-4 space-y-4">
                                 <li>
-                                    <a href="#faq" class="text-base text-gray-600 hover:text-purple-500">
+                                    <a href="#faq" class="text-base text-gray-600 hover:text-orange-500">
                                         FAQ
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-base text-gray-600 hover:text-purple-500">
+                                    <a href="mailto:vividvoice.app@gmail.com" class="text-base text-gray-600 hover:text-orange-500">
                                         Help Center
                                     </a>
                                 </li>
@@ -810,7 +766,7 @@ Join Waitlist
             </div>
             <div class="mt-12 border-t border-gray-200 pt-8">
                 <p class="text-base text-gray-400 text-center">
-                    &copy; 2025 Vivid Voice. All rights reserved.
+                    &copy; 2026 Vivid Voice. All rights reserved.
                 </p>
             </div>
         </div>
@@ -880,5 +836,5 @@ Join Waitlist
             });
         });
     </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Christopher30/vivid-voice-waitlist" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
-</html>H
+</body>
+</html>
